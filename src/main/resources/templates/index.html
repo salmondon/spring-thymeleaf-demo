@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Home</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="center">
+
+  <h3>Customer List</h3>
+  <a th:href="@{/addnew}">Add Customer</a>
+  <table style="width:80%" border="1">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Telephone No.</th>
+      <th>Address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer:${customers}">
+      <td th:text="${customer.id}"></td>
+      <td th:text="${customer.name}"></td>
+      <td th:text="${customer.tel}"></td>
+      <td th:text="${customer.address}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<form action="#" th:action="@{/findById}" th:object="${customerId}"  method="GET">
+  <input type="text" th:field="*{id}" placeholder="ID to find">
+  <button type="submit">Find by id</button>
+</form>
+
+<!--<div>-->
+<!--  <form action="#" th:action="@{/customerById}" th:object="${foo}}" method="POST">-->
+
+<!--    <button type="submit">Find by id</button>-->
+<!--  </form>-->
+<!--</div>-->
+
+</body>
+</html>
